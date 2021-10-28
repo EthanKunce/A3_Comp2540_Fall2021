@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Stack2540Array {
 
-    private int CAPACITY = 128;
+    private int CAPACITY = 10000;
     private int top;
     private String[] stack;
 
@@ -33,6 +33,11 @@ public class Stack2540Array {
     public void push(String element) {
         top++;
         stack[top] = element;
+    }
+
+    public void push(char element) {
+        top++;
+        stack[top] = element+"";
     }
 
     public String pop(){
