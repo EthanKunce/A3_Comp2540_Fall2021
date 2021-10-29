@@ -1,21 +1,33 @@
 import java.io.*;
 import java.util.*;
 
-public class Stack2540Array {
+public class Stack2540Array{
 
-    private int CAPACITY = 10000;
+    private int CAPACITY = 256;
     private int top;
     private String[] stack;
 
+
+    public Stack2540Array(int size){
+        stack = new String[size];
+        top = -1;
+    }
+
     public Stack2540Array(){
 
-    stack = new String[CAPACITY];
-    top = -1;
+        stack = new String[CAPACITY];
+        top = -1;
     }
 
     public int size() { return top + 1; }
 
     public boolean isEmpty () { return (top == -1); }
+
+    public String[] copyAsArray(){
+        // String[] ret = Arrays.copyOf(stack, stack.length);
+
+        return Arrays.copyOf(stack, stack.length);
+    }
 
     public String top(){
 
@@ -31,13 +43,26 @@ public class Stack2540Array {
     }
 
     public void push(String element) {
-        top++;
+        if(++top >= stack.length-1){
+            resize();
+        }
         stack[top] = element;
     }
 
     public void push(char element) {
-        top++;
+        // top++;
+        if(++top >= stack.length-1){
+            resize();
+        }
         stack[top] = element+"";
+    }
+
+    public void resize(){
+        if(top >= stack.length-1){
+            // CAPACITY *= 2;
+            String[] newArray = Arrays.copyOf(stack, stack.length*2);
+            stack = newArray;
+        }
     }
 
     public String pop(){
@@ -48,8 +73,8 @@ public class Stack2540Array {
         }
 
         String temp = stack[top];
-        stack[top] = null;
-        top--;
+        stack[top--] = null;
+        // top--;
         return temp;
     }
 

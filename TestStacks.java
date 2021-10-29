@@ -35,11 +35,11 @@ public class TestStacks{
         }
 
 
-        String filename = "dblp200.txt";
+        String filename = "dblp200";
         // Scanner reader = new Scanner(new File(filename));
-        String[] reverseInput = reverse(filename);
+        String[] reverseInput = reverse(filename+".txt");
 
-        PrintWriter writer = new PrintWriter(filename+ "_Reverse");
+        PrintWriter writer = new PrintWriter(filename+ "_Reverse.txt");
         for(String a : reverseInput){
             writer.print(a);
         }
@@ -71,21 +71,10 @@ public class TestStacks{
     public static String [] reverse(String filename) throws Exception{
         Scanner scanner = new Scanner(new File(filename)).useDelimiter("[^a-zA-Z]+");
         Stack2540Array stack = new Stack2540Array();
-        int[] newLineCount = new int[2000];
-        int lineCountIndex = 0;
-        int iWordCounter = 0;
-        String temp;
+
+        // String temp;
         while (scanner.hasNext()){
-            temp = scanner.next();
-            if(temp.contains("\n"))
-            {
-                newLineCount[lineCountIndex++] = iWordCounter;
-                iWordCounter = 0;
-            }
-            else{
-                iWordCounter++;
-            }
-            stack.push(temp.toLowerCase());
+            stack.push(scanner.next().toLowerCase());
         }
         String [] rev = new String[stack.size()];
 
@@ -93,22 +82,61 @@ public class TestStacks{
         int i = 0;
         while(!stack.isEmpty())
         {
-            // test.append(stack.pop());
-            if(newLineCount[lineCountIndex] < 1)
-            {
-                rev[i++] = "\n"+stack.pop();  
-                lineCountIndex--; 
-            }
-            else{
-                rev[i++] = " "+ stack.pop();
-            }
-            newLineCount[lineCountIndex]--;
+            rev[i] = stack.pop();
         }
         
         
         scanner.close();
         return rev;
         }
+
+        
+    public static String [] reverseI(String filename) throws Exception{
+        Scanner scanner = new Scanner(new File(filename)).useDelimiter("[^a-zA-Z]+");
+        Stack2540ArrayI stack = new Stack2540ArrayI();
+
+        // String temp;
+        while (scanner.hasNext()){
+            stack.push(scanner.next().toLowerCase());
+        }
+        String [] rev = new String[stack.size()];
+
+        // StringBuilder test = new StringBuilder();
+        int i = 0;
+        while(!stack.isEmpty())
+        {
+            rev[i] = stack.pop();
+        }
+        
+        
+        scanner.close();
+        return rev;
+        }
+
+        public static String [] reverse(String[] tokens) throws Exception{
+            // Scanner scanner = new Scanner(new File(filename)).useDelimiter("[^a-zA-Z]+");
+            Stack2540Array stack = new Stack2540Array();
+    
+            // String temp;
+            for(String c : tokens){
+                stack.push(c);
+            }
+            String [] rev = new String[stack.size()];
+    
+            // StringBuilder test = new StringBuilder();
+            int i = 0;
+            while(!stack.isEmpty())
+            {
+                rev[i] = stack.pop();
+            }
+            
+            return rev;
+            }
+
+
+
+
+    
 
 /*
     public static boolean isMatched(String expression){
