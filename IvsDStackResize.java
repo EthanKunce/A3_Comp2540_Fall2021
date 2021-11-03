@@ -122,7 +122,7 @@ public class IvsDStackResize{
 		long endTime = 1;
 
 		PrintWriter writer = new PrintWriter("newFile.txt");
-		String OUTPUT = "\tStackTokenization\tScanner";
+		String OUTPUT = "\tdoubling\tincrement";
 		writer.println(OUTPUT);
 		System.out.println(OUTPUT);
 
@@ -140,8 +140,8 @@ public class IvsDStackResize{
 					// tokens = readLowCase(PATH+DATASETS[j]+".txt");
 					startTime = System.currentTimeMillis();
 					// tokens = readLowCase(PATH+DATASETS[j]+".txt");
-					// reverse(PATH+DATASETS[j]+".txt");
-					reverse(readLowCase(PATH+DATASETS[j]+".txt"));
+					reverse(PATH+DATASETS[j]+".txt");
+					// reverse(readLowCase(PATH+DATASETS[j]+".txt"));
 
 					endTime = System.currentTimeMillis();
 					OUTPUT = (endTime-startTime)+"\t";
@@ -151,8 +151,8 @@ public class IvsDStackResize{
 				else{
 					startTime = System.currentTimeMillis();
 
-					// reverseI(PATH+DATASETS[j]+".txt");
-					reverse(PATH+DATASETS[j]+".txt");
+					reverseI(PATH+DATASETS[j]+".txt");
+					// reverse(PATH+DATASETS[j]+".txt");
 
 					endTime = System.currentTimeMillis();
 					OUTPUT = (endTime-startTime)+"\t";
